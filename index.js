@@ -146,7 +146,6 @@ getStream().then(getDevices).then(gotDevices);
 
         // Map zoom to a slider element.
         zoominput.min = capabilities.zoom.min + 0.1;
-        alert('hehe ' + capabilities.zoom.min);
         zoominput.max = capabilities.zoom.max;
         zoominput.step = capabilities.zoom.step;
         zoominput.value = settings.zoom;
