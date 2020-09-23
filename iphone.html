@@ -1,3 +1,5 @@
+<!-- Reference: https://www.html5rocks.com/en/tutorials/getusermedia/intro/ -->
+
 <!doctype html>
 <html lang="en">
 
@@ -65,27 +67,18 @@
 
         function getStream() {
             if (!navigator.getUserMedia && !navigator.webkitGetUserMedia &&
-                !navigator.mozGetUserMedia && !navigator.msGetUserMedia) {
-                alert('User Media API not supported.');
+                !navigator.mozGetUserMedia && !navigator.msGetUserMedia && !navigator.mediaDevices.getUserMedia) {
+                //alert('User Media API not supported.');
                 return;
             }
 
             var constraints = {
                 video: true
             };
-
-            getUserMedia(constraints, function(stream) {
-                var mediaControl = document.querySelector('video');
-                if ('srcObject' in mediaControl) {
-                    mediaControl.srcObject = stream;
-                } else if (navigator.mozGetUserMedia) {
-                    mediaControl.mozSrcObject = stream;
-                } else {
-                    mediaControl.src = (window.URL || window.webkitURL).createObjectURL(stream);
-                }
-                theStream = stream;
-            }, function(err) {
-                alert('Error: ' + err);
+            var mediaControl = document.querySelector('video');
+            navigator.mediaDevices.getUserMedia(constraints).
+            then((stream) => {
+                mediaControl.srcObject = stream
             });
         }
 
