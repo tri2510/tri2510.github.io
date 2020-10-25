@@ -9,11 +9,13 @@
     <!-- Bootstrap CSS -->
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
     <title>Camera app</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+
 </head>
 
 <body>
     <nav class="navbar navbar-expand-lg navbar-light bg-light">
-        <a class="navbar-brand" href="#">Ukid Camera App</a>
+        <a class="navbar-brand" href="#">Camera App Latested update on 20.10.2020</a>
     </nav>
     <div class="container my-3">
         <div class="row">
@@ -21,27 +23,32 @@
                 <div class="card">
                     <div class="card-header">
                         Phone camera
-						<div class="select">
-							<label for="videoSource">Video source: </label><select id="videoSource"></select>
-						</div>
+                        <div class="select">
+                            <label for="videoSource">Video source: </label><select id="videoSource"></select>
+                        </div>
                     </div>
                     <div class="card-body">
                         <div class="container col-12">
                             <div style="position: relative;">
+                                <!-- Ảnh hiện từ camera -->
                                 <video autoplay style="max-width: 100%; max-height: 100%; min-width: 100%; min-height: 100%;"></video>
+                                <!-- Ảnh xem trước sau khi chụp -->
                                 <div style="position: absolute; width: 30%; height: 30%; bottom: 10px; right: 10px; ">
                                     <img id="imageTag" style="width: 100%; height: 100%;">
                                 </div>
-                                <canvas id="canvas">
-                                </canvas>
+                                <div style="display: none;">
+                                    <canvas id="canvas"></canvas>
+                                </div>
+
+
                             </div>
                         </div>
                     </div>
                     <div class="card-footer text-muted">
                         <div class="d-flex justify-content-end">
-                            <button type="button" class="btn btn-primary p-2 mr-1" onclick="getStream()">Start camera</button>
-                            <button type="button" class="btn btn-primary p-2 mr-1" onclick="takePhoto()">Chụp</button>
-                            <button type="button" class="btn btn-primary p-2 mr-1" onclick="savePhoto()">Lưu</button>
+                            <button type="button" class="btn btn-primary p-2 col-2 mr-1" onclick="getStream()">Start camera</button>
+                            <button type="button" class="btn btn-primary p-2 col-8 mr-1 fa fa-camera" onclick="takePhoto()"></button>
+                            <button type="button" class="btn btn-primary p-2 col-2 mr-1 fa fa-save" onclick="savePhoto()">&nbsp;Lưu</button>
                         </div>
                         Zoom
                         <input type="range" class="custom-range mt-2" id="zoomInput" value="0" oninput="updateZoom()" onvolumechange="updateZoom()"> Focus
